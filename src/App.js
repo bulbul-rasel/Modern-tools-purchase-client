@@ -29,7 +29,7 @@ function App() {
           <Route path='/signup' element={<Signup />}></Route>
         </Routes>
       </Navbar>
-      <Footer />
+      {/* <Footer /> */}
       <ToastContainer />
     </div>
   );
