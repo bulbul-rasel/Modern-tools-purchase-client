@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Signup from './Login/Signup';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -21,7 +22,6 @@ function App() {
     <div>
       <Navbar>
 
-
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/home' element={<Home />}></Route>
@@ -29,6 +29,7 @@ function App() {
           <Route path='/signup' element={<Signup />}></Route>
         </Routes>
       </Navbar>
+      <Footer />
       <ToastContainer />
     </div>
   );

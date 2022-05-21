@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { useForm } from 'react-hook-form';
+import Loading from '../components/Loading';
 
 const Login = () => {
 
@@ -13,13 +14,51 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
 
+    // const [token] = useToken(user || gUser);
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    // useEffect(() => {
+    //     if (user) {
+    //         console.log(user || gUser);
+    //         navigate(from, { replace: true });
+    //     }
+
+    // }, [user, from, navigate])
+    if (user) {
+        console.log(user || gUser);
+        navigate(from, { replace: true });
+    }
+
+    let signInError;
+
+    if (error || gError) {
+        signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+    }
+
+    if (loading || gLoading) {
+        return <Loading />
+    }
+
+
+    const onSubmit = data => {
+        console.log(data);
+        signInWithEmailAndPassword(data.email, data.password)
+    };
+
+
     return (
         <div className='flex h-screen justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Login</h2>
+                    <h2 className="text-center text-2xl font-bold">Please Login</h2>
 
-                    <form >
+                    <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
@@ -69,8 +108,8 @@ const Login = () => {
 
                             </label>
                         </div>
-
-                        <input className='btn w-full max-w-xs text-white btn-primary' type="submit" value='Login' />
+                        {signInError}
+                        <input className='btn w-full max-w-xs  font-bold btn-primary' type="submit" value='Login' />
                     </form>
                     <p>New to Modern Tools? <span><small><Link className='text-primary' to="/signup">Create new account?</Link></small></span></p>
                     <div className="divider">OR</div>

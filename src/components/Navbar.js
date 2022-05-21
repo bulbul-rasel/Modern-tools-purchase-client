@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink } from 'react-router-dom';
+import auth from '../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Navbar = ({ children }) => {
     const [dark, setDark] = useState(false);
+    const [user, loading, error] = useAuthState(auth);
+    const logOut = () => {
+        signOut(auth)
+        // localStorage.removeItem('accessToken')
+    }
+
     return (
         <div class="drawer drawer-end " data-theme={dark ? "dark" : "light"}>
             <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
@@ -29,7 +38,14 @@ const Navbar = ({ children }) => {
                             <li><NavLink className='rounded-lg' to='/contact'>Contact</NavLink></li>
                             <li><NavLink className='rounded-lg' to='/dashboard/add-services'>Dashboard</NavLink></li>
                             <li><NavLink className='rounded-lg' to='/services'>Services</NavLink></li>
-                            <li><NavLink className='rounded-lg' to='/login'>Login</NavLink></li>
+                            {
+                                user ? <button className="btn btn-ghost  mt-2" onClick={logOut}>SignOut</button> : <li><NavLink className='rounded-lg' to='/login'>Login</NavLink></li>
+                            }
+                            {
+                                user && <li className='mt-5 font-bold text-primary'> 🤵🏻{user.displayName}</li>
+                            }
+
+
                             <li class="dropdown dropdown-hover dropdown-end">
 
                                 <label tabindex="0" class="btn btn-primary rounded-lg btn-outline m-1">Book Now</label>

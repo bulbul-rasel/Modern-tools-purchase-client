@@ -1,16 +1,11 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 const Home = () => {
     return (
         <div className=''>
-            <h3>This is Home</h3>
-            <h3>This is Home</h3>
-            <h3>This is Home</h3>
-            <h3>This is Home</h3>
-            <h3>This is Home</h3>
-            <h3>This is Home</h3>
-            <h3>This is Home</h3>
-            <h3>This is Home</h3>
+
+            <Footer />
         </div>
     );
 };
