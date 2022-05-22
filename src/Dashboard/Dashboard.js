@@ -15,7 +15,7 @@ const Dashboard = () => {
                 <ul class="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
                     <li><Link to='/dashboard'>My Appointment</Link></li>
                     <li><Link to='/dashboard/review'>My Review</Link></li>
-                    <li><Link to='/dashboard/history'>My History</Link></li>
+                    <li><Link to='/dashboard/myOrder'>My Order</Link></li>
                     <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
                     <li><Link to='/dashboard/manageProduct'>Manage Product</Link></li>
                     {/* {admin && <>

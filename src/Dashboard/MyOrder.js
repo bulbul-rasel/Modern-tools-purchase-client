@@ -1,19 +1,35 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const ManageItem = ({ product }) => {
-    const { name, image, description, price, quantity, minimum } = product;
-    const [products, setProducts] = useState([]);
+const MyOrder = () => {
+    const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('http://localhost:5000/bookings')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => setBookings(data))
     }, [])
 
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure for delete?');
+        if (proceed) {
+            (async () => {
+                const { data } = await axios.delete(`http://localhost:5000/products/${id}`);
+
+                if (!data.success) return toast.error(data.error)
+
+                toast(data.message);
+
+                const remaining = bookings.filter(product => product._id !== id);
+                setBookings(remaining)
+            })()
+        }
+    }
     return (
         <div>
-            <h2 className="title-lr text-center">All Items</h2>
+            <h2 className="text-3xl text-primary text-center">All Items</h2>
             <table className="table table-success table-striped">
                 <thead>
                     <tr>
@@ -22,24 +38,24 @@ const ManageItem = ({ product }) => {
                         <th scope="col">Description</th>
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Supplier Name</th>
+                        <th scope="col">Minimum Quantity</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        products.map(product => {
+                        bookings.map(product => {
                             return <tr>
                                 <th>{product.name}</th>
-                                <td style={{ width: "100px" }} ><img className='w-100' src={image} alt="" /></td>
+                                <td style={{ width: "100px" }} ><img className='w-100' src={product.image} alt="" /></td>
                                 <td>{product.description}</td>
                                 <td>{product.price}</td>
                                 <td>{product.quantity}</td>
                                 <td>{product.minimum}</td>
                                 <td style={{ width: "100px" }}>
                                     <Link
-                                        to={'/manageItem'}
-                                    // onClick={() => handleDelete(product._id)}
+                                        to={'/manageProduct'}
+                                        onClick={() => handleDelete(product._id)}
 
                                     >
                                         DELETE 🗑
@@ -56,4 +72,4 @@ const ManageItem = ({ product }) => {
     );
 };
 
-export default ManageItem;
+export default MyOrder;

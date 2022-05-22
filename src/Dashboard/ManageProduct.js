@@ -31,7 +31,7 @@ const ManageProduct = ({ product }) => {
 
     return (
         <div>
-            <h2 className="title-lr text-center">All Items</h2>
+            <h2 className="text-3xl text-primary text-center">All Items</h2>
             <table className="table table-success table-striped">
                 <thead>
                     <tr>
@@ -40,7 +40,7 @@ const ManageProduct = ({ product }) => {
                         <th scope="col">Description</th>
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Supplier Name</th>
+                        <th scope="col">Minimum Quantity</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>

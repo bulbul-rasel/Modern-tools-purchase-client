@@ -10,13 +10,12 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Signup from './Login/Signup';
-import Footer from './components/Footer';
 import RequireAuth from './authentication/RequireAuth';
 import Purchase from './pages/Products/Purchase';
 import Dashboard from './Dashboard/Dashboard';
 import AddProduct from './pages/Products/AddProduct';
 import ManageProduct from './Dashboard/ManageProduct';
-import ManageItem from './pages/Products/ManageItem';
+import MyOrder from './Dashboard/MyOrder';
 
 
 function App() {
@@ -33,7 +32,6 @@ function App() {
           <Route path='/home' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/manageItem' element={<ManageItem />}></Route>
           <Route path='/product/:productId' element={<RequireAuth>
             <Purchase />
           </RequireAuth>}></Route>
@@ -44,6 +42,7 @@ function App() {
           }>
             <Route path='addProduct' element={<AddProduct />}></Route>
             <Route path='manageProduct' element={<ManageProduct />}></Route>
+            <Route path='myOrder' element={<MyOrder />}></Route>
           </Route>
         </Routes>
       </Navbar>
