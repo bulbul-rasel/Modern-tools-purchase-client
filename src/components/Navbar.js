@@ -34,9 +34,11 @@ const Navbar = ({ children }) => {
                         <ul class="menu menu-horizontal gap-x-2">
 
                             <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
-                            <li><NavLink className='rounded-lg' to='/purchase'>Purchase</NavLink></li>
+                            <li><NavLink className='rounded-lg' to='/manageItem'>Manage Item</NavLink></li>
                             <li><NavLink className='rounded-lg' to='/contact'>Contact</NavLink></li>
-                            <li><NavLink className='rounded-lg' to='/dashboard/add-services'>Dashboard</NavLink></li>
+                            {
+                                user && <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
+                            }
                             <li><NavLink className='rounded-lg' to='/services'>Services</NavLink></li>
                             {
                                 user ? <button className="btn btn-ghost  mt-2" onClick={logOut}>SignOut</button> : <li><NavLink className='rounded-lg' to='/login'>Login</NavLink></li>

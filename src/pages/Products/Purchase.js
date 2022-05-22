@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const Purchase = () => {
+    const [user] = useAuthState(auth);
 
     const { productId } = useParams();
     const [product, setProduct] = useState({});
@@ -68,11 +71,13 @@ const Purchase = () => {
 
     return (
         <div className='mt-20 flex justify-center items-center'>
+
             <div class="card w-96 bg-base-100 shadow-xl">
                 <figure class="px-10 pt-10">
                     <img src={product.image} alt="Shoes" class="rounded-xl" />
                 </figure>
                 <div class="card-body items-center text-center">
+                    <p>User: {user.email}</p>
                     <h2 class="card-title">{product.name}</h2>
                     <p>{product.description}</p>
                     <p> Available Quantity: {newQuantity}</p>
@@ -81,10 +86,13 @@ const Purchase = () => {
                     <form onSubmit={handleUpdate} class="card-actions">
                         <input type="text" name='name' placeholder="Enter Product Quantity" class="input w-full max-w-xs" />
 
-                        <button class="btn btn-primary w-full" type='submit'>Buy Now</button>
+                        <button class="btn btn-primary w-full" type='submit'>Booked</button>
                     </form>
+
+                    <button class="btn btn-primary w-full" type='submit'>Buy Now</button>
                 </div>
             </div>
+
         </div>
     );
 };
