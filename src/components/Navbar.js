@@ -9,7 +9,7 @@ const Navbar = ({ children }) => {
     const [user, loading, error] = useAuthState(auth);
     const logOut = () => {
         signOut(auth)
-        // localStorage.removeItem('accessToken')
+        localStorage.removeItem('accessToken')
     }
 
     return (

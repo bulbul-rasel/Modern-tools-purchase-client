@@ -16,6 +16,7 @@ import Dashboard from './Dashboard/Dashboard';
 import AddProduct from './pages/Products/AddProduct';
 import ManageProduct from './Dashboard/ManageProduct';
 import MyOrder from './Dashboard/MyOrder';
+import Users from './Dashboard/Users';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
             <Route path='addProduct' element={<AddProduct />}></Route>
             <Route path='manageProduct' element={<ManageProduct />}></Route>
             <Route path='myOrder' element={<MyOrder />}></Route>
+            <Route path='users' element={<Users />}></Route>
           </Route>
         </Routes>
       </Navbar>
