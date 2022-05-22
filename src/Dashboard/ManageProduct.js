@@ -56,7 +56,7 @@ const ManageProduct = ({ product }) => {
                                 <td>{product.minimum}</td>
                                 <td style={{ width: "100px" }}>
                                     <Link
-                                        to={'/manageProduct'}
+                                        to={'/dashboard/manageProduct'}
                                         onClick={() => handleDelete(product._id)}
 
                                     >

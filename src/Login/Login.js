@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import Loading from '../components/Loading';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import useToken from '../hookes/useToken';
 
 const Login = () => {
 
@@ -18,7 +19,6 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
 
-    // const [token] = useToken(user || gUser);
 
     const [
         signInWithEmailAndPassword,
@@ -27,17 +27,17 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    // useEffect(() => {
-    //     if (user) {
-    //         console.log(user || gUser);
-    //         navigate(from, { replace: true });
-    //     }
+    const [token] = useToken(user || gUser);
 
-    // }, [user, from, navigate])
-    if (user || gUser) {
-        console.log(user || gUser);
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (token) {
+            console.log(user || gUser);
+            navigate(from, { replace: true });
+        }
+
+    }, [token, from, navigate])
+
+
 
     let signInError;
 

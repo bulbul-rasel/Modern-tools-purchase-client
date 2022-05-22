@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading';
 import auth from '../firebase.init';
+import useToken from '../hookes/useToken';
 
 const Signup = () => {
 
@@ -19,7 +20,7 @@ const Signup = () => {
 
     const [updateProfile, updating, uError] = useUpdateProfile(auth);
 
-    // const [token] = useToken(user || gUser);
+    const [token] = useToken(user || gUser);
 
     const navigate = useNavigate();
     let signInError;
@@ -33,7 +34,7 @@ const Signup = () => {
         signInError = <p className='text-red-500'><small>{error?.message || gError?.message || uError?.message}</small></p>
     }
 
-    if (user || gUser) {
+    if (token) {
         navigate('/');
     }
 
@@ -43,6 +44,7 @@ const Signup = () => {
         console.log("Update Done!");
 
     };
+
 
     return (
         <div className='flex h-screen justify-center items-center'>
