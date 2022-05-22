@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../components/Loading';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
     const navigate = useNavigate()
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -30,7 +34,7 @@ const Login = () => {
     //     }
 
     // }, [user, from, navigate])
-    if (user) {
+    if (user || gUser) {
         console.log(user || gUser);
         navigate(from, { replace: true });
     }
@@ -50,6 +54,22 @@ const Login = () => {
         console.log(data);
         signInWithEmailAndPassword(data.email, data.password)
     };
+
+    // const resetPassword = async () => {
+    //     const email = emailRef.current.value;
+    //     console.log(email);
+
+
+    //     if (email) {
+    //         sendPasswordResetEmail(auth, email)
+    //             .then(() => {
+    //                 toast("Email Sent");
+    //             }, [])
+
+    //     } else {
+    //         toast("Enter Your Email");
+    //     }
+    // }
 
 
     return (
@@ -76,6 +96,7 @@ const Login = () => {
                                     }
                                 })}
                                 type="email"
+                                // ref={emailRef}
                                 placeholder="Your Email"
                                 className="input input-bordered w-full max-w-xs" />
                             <label className="label">
@@ -100,6 +121,7 @@ const Login = () => {
                                     }
                                 })}
                                 type="password"
+                                // ref={passwordRef}
                                 placeholder="Password"
                                 className="input input-bordered w-full max-w-xs" />
                             <label className="label">
@@ -112,9 +134,10 @@ const Login = () => {
                         <input className='btn w-full max-w-xs  font-bold btn-primary' type="submit" value='Login' />
                     </form>
                     <p>New to Modern Tools? <span><small><Link className='text-primary' to="/signup">Create new account?</Link></small></span></p>
+                    <p>Forget Password? <button className='btn btn-link text-dark text-decoration-none '  > Reset Password </button ></p>
                     <div className="divider">OR</div>
                     <button
-
+                        onClick={() => signInWithGoogle()}
                         className="btn btn-outline btn-primary"
                     >Continue With Google</button>
                 </div>

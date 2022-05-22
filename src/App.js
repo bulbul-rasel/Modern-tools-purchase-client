@@ -11,6 +11,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Signup from './Login/Signup';
 import Footer from './components/Footer';
+import RequireAuth from './authentication/RequireAuth';
+import Purchase from './pages/Products/Purchase';
 
 
 function App() {
@@ -27,6 +29,9 @@ function App() {
           <Route path='/home' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/product/:productId' element={<RequireAuth>
+            <Purchase />
+          </RequireAuth>}></Route>
         </Routes>
       </Navbar>
       {/* <Footer /> */}
