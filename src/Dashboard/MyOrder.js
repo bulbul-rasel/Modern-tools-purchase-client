@@ -16,7 +16,7 @@ const MyOrder = () => {
         const proceed = window.confirm('Are you sure for delete?');
         if (proceed) {
             (async () => {
-                const { data } = await axios.delete(`http://localhost:5000/products/${id}`);
+                const { data } = await axios.delete(`http://localhost:5000/bookings/${id}`);
 
                 if (!data.success) return toast.error(data.error)
 
@@ -34,11 +34,11 @@ const MyOrder = () => {
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Phone</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Minimum Quantity</th>
+                        <th scope="col">Address</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -47,14 +47,14 @@ const MyOrder = () => {
                         bookings.map(product => {
                             return <tr>
                                 <th>{product.name}</th>
-                                <td style={{ width: "100px" }} ><img className='w-100' src={product.image} alt="" /></td>
-                                <td>{product.description}</td>
+                                <td>{product.email}</td>
+                                <td>{product.product}</td>
+                                <td>{product.phone}</td>
                                 <td>{product.price}</td>
-                                <td>{product.quantity}</td>
-                                <td>{product.minimum}</td>
+                                <td>{product.address}</td>
                                 <td style={{ width: "100px" }}>
                                     <Link
-                                        to={'/manageProduct'}
+                                        to={'/dashboard/myOrder'}
                                         onClick={() => handleDelete(product._id)}
 
                                     >
