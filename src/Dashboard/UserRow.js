@@ -11,23 +11,19 @@ const UserRow = ({ user, index, refetch }) => {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then(res => {
+                if (res.status === 403) {
+                    toast.error("Failed to make an Admin")
+                }
+                return res.json()
             })
-        // .then(res => {
-        //     if (res.status === 403) {
-        //         toast.error("Failed to make an Admin")
-        //     }
-        //     return res.json()
-        // })
-        // .then(data => {
-        //     if (data.modifiedCount > 0) {
+            .then(data => {
+                if (data.modifiedCount > 0) {
 
-        //         refetch()
-        //         toast.success(`Successfully Made an Admin`);
-        //     }
-        // })
+                    refetch()
+                    toast.success(`Successfully Made an Admin`);
+                }
+            })
     }
     return (
         <tr>
