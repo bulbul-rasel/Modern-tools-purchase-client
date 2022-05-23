@@ -12,7 +12,9 @@ const Purchase = () => {
     const { productId } = useParams();
     const [product, setProduct] = useState({});
     const [newQuantity, setNewQuantity] = useState(0)
+    const [newPrice, setNewPrice] = useState(0)
     console.log(newQuantity);
+    console.log(newPrice);
 
     useEffect(() => {
         const url = `http://localhost:5000/product/${productId}`;
@@ -22,6 +24,7 @@ const Purchase = () => {
             .then(data => {
                 setProduct(data)
                 setNewQuantity(data.quantity);
+                setNewPrice(data.price);
                 // console.log(data.quantity);
             })
     }, [productId]);
@@ -55,7 +58,9 @@ const Purchase = () => {
         const quantity = event.target.name.value;
         console.log(quantity);
         const updatedQuantity = newQuantity - parseInt(quantity);
+        const price = parseInt(quantity) * newPrice;
         setNewQuantity(updatedQuantity);
+        setNewPrice(price)
 
         const url = `http://localhost:5000/product/${productId}`;
         fetch(url, {
@@ -93,7 +98,7 @@ const Purchase = () => {
                                 <p>Minimum Order: {product.minimum}</p>
                                 <p>Price:{product.price}</p>
                                 <form onSubmit={handleUpdate} class="card-actions">
-                                    <input type="text" name='name' value={product.minimum} placeholder="Enter Product Quantity" class="input w-full max-w-xs" />
+                                    <input type="text" name='name' placeholder="Enter Product Quantity" class="input w-full max-w-xs" />
 
                                     <button class="btn btn-primary w-full" type='submit'>Booked</button>
                                 </form>
