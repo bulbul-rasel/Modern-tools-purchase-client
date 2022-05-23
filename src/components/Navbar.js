@@ -35,7 +35,7 @@ const Navbar = ({ children }) => {
                         <ul class="menu menu-horizontal gap-x-2">
 
                             <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
-                            <li><NavLink className='rounded-lg' to='/contact'>Contact</NavLink></li>
+                            <li><NavLink className='rounded-lg' to='/blog'>Blog</NavLink></li>
                             {
                                 user && <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                             }
@@ -73,7 +73,8 @@ const Navbar = ({ children }) => {
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
 
                     <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
-                    <li><NavLink className='rounded-lg' to='/contact'>Contact</NavLink></li>
+                    <li><NavLink className='rounded-lg' to='/myProfile'>My Profile </NavLink></li>
+                    <li><NavLink className='rounded-lg' to='/blog'>Blog</NavLink></li>
                     {
                         user && <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                     }

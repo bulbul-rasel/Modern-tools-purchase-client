@@ -16,9 +16,9 @@ const AddProduct = () => {
             email: event.target.email.value,
             image: event.target.image.value,
             description: event.target.description.value,
-            price: event.target.price.value,
-            quantity: event.target.quantity.value,
-            minimum: event.target.minimum.value,
+            price: parseFloat(event.target.price.value),
+            quantity: parseFloat(event.target.quantity.value),
+            minimum: parseFloat(event.target.minimum.value),
 
         };
         const { data } = await axios.post("http://localhost:5000/products", product);

@@ -91,7 +91,6 @@ const Purchase = () => {
                                 <img src={product.image} alt="Shoes" class="rounded-xl" />
                             </figure>
                             <div class="card-body items-center text-center">
-                                <p>User: {user.email}</p>
                                 <h2 class="card-title">{product.name}</h2>
                                 <p>{product.description}</p>
                                 <p> Available Quantity: {newQuantity}</p>
@@ -106,7 +105,7 @@ const Purchase = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100  flex justify-center items-center p-10">
                         <form onSubmit={handleSubmit}>
                             <div class="form-control w-full max-w-xs">
                                 <label class="label">
@@ -152,7 +151,7 @@ const Purchase = () => {
 
                             </div>
 
-                            <button className='btn btn-primary w-full ' type='submit'>Confirm Purchase</button>
+                            <button className='btn btn-primary w-full mt-5' type='submit'>Confirm Purchase</button>
                         </form>
                     </div>
                 </div>

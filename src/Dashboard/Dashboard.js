@@ -11,14 +11,15 @@ const Dashboard = () => {
         <div class="drawer drawer-mobile mt-20">
             <input id="dashboard-sidebar" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content flex flex-col ">
-                <h2 className='text-3xl font-bold text-primary'>Welcome to your Dashboard</h2>
+                <h2 className=' flex justify-center items-center text-3xl font-bold text-primary'>Welcome to your Dashboard</h2>
                 <Outlet></Outlet>
 
             </div>
             <div class="drawer-side">
                 <label for="dashboard-sidebar" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
-                    <li><Link to='/dashboard'>My Appointment</Link></li>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <li><Link to='/dashboard/myProfile'>My Profile</Link></li>
                     <li><Link to='/dashboard/myReview'>My Review</Link></li>
                     <li><Link to='/dashboard/addReview'>Add Review</Link></li>
                     <li><Link to='/dashboard/order'>My Order</Link></li>

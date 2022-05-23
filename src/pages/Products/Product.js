@@ -15,7 +15,7 @@ const Product = ({ product }) => {
             <p>Description: {description}</p>
             <p>Price: {price}</p>
             <p>Quantity: {quantity}</p>
-            <p>Supplier Name: {minimum}</p>
+            <p>Minimum Order Quantity: {minimum}</p>
             <button onClick={() => navigateToProductDetail(_id)} className='btn btn-primary' variant="" type="submit">Book now</button>
 
         </div>

@@ -20,7 +20,9 @@ import Users from './Dashboard/Users';
 import RequireAdmin from './authentication/RequireAdmin';
 import Order from './Dashboard/Order';
 import MyReview from './Dashboard/MyReview';
-import AddReview from './Dashboard/AddReview';
+import Blog from './components/Blog';
+import AddReview from './pages/addPage/AddReview';
+import MyProfile from './pages/addPage/MyProfile';
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/home' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
+          <Route path='/blog' element={<Blog />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/product/:productId' element={<RequireAuth>
             <Purchase />
@@ -45,6 +48,7 @@ function App() {
               <Dashboard></Dashboard>
             </RequireAuth>
           }>
+            <Route path='myProfile' element={<MyProfile />}></Route>
             <Route path='addProduct' element={<AddProduct />}></Route>
             <Route path='manageProduct' element={<ManageProduct />}></Route>
             <Route path='myReview' element={<MyReview />}></Route>
