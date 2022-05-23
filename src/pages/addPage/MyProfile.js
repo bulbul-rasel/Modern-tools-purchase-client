@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const MyProfile = () => {
+    const [profile, setProfile] = useState([]);
     const [user] = useAuthState(auth);
     const navigate = useNavigate()
+    const { id } = useParams()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const profile = {
+            email: event.target.email.value,
             education: event.target.education.value,
             location: event.target.location.value,
             phone: event.target.phone.value,
@@ -28,17 +32,40 @@ const MyProfile = () => {
         toast.success(data.message)
         navigate('/dashboard/myProfile')
 
-
+        event.target.reset();
         console.log(data);
+
     }
 
-    const [profile, setProfile] = useState([]);
-
     useEffect(() => {
-        fetch('http://localhost:5000/profile')
-            .then(res => res.json())
-            .then(data => setProfile(data))
-    }, [])
+        const myProfile = async () => {
+            const email = user?.email;
+            const url = `http://localhost:5000/myProfile?email=${email}`
+            try {
+                const { data } = await axios.get(url, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                setProfile(data);
+            } catch (error) {
+                toast(error.message);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login')
+                }
+            }
+        }
+        myProfile();
+
+    }, [user]);
+
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/profile')
+    //         .then(res => res.json())
+    //         .then(data => setProfile(data))
+    // }, [])
 
     return (
         <div className='mx-2'>
@@ -49,56 +76,62 @@ const MyProfile = () => {
             </div>
             <h2 className='text-3xl text-primary text-bold uppercase'> {user.displayName}</h2>
             <h2 className='text-xl text-secondary text-bold '> {user.email}</h2>
-
-
-            <div class="bg-base-200">
-                <div class="hero-content flex-col lg:flex-row-reverse">
-                    <form onSubmit={handleSubmit}>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text">Education</span>
-                            </label>
-                            <input type="text" name='education' placeholder='Give your education Detail' class="input input-bordered w-full max-w-xs" />
+            <div >
+                {
+                    profile.map(p => {
+                        return <div>
+                            <p className='font-bold text-primary text-xl'>{p.education}</p>
+                            <p className='font-bold text-primary text-xl'>{p.location}</p>
+                            <p className='font-bold text-primary text-xl'>{p.phone}</p>
+                            <p className='font-bold text-primary text-xl'>{p.linkedin}</p>
                         </div>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text">Location</span>
-                            </label>
-                            <input type="text" name='location' placeholder='Give your location ' class="input input-bordered w-full max-w-xs" />
-                        </div>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text">Phone Number</span>
-                            </label>
-                            <input type="text" name='phone' placeholder="Type here Something" class="input input-bordered w-full max-w-xs" />
-                        </div>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text">LinkedIn Profile </span>
-                            </label>
-                            <input type="text" name="linkedin" placeholder="Send Image link" class="input input-bordered w-full max-w-xs" />
-                        </div>
-                        <button className='btn btn-primary ' type='submit'>Update </button>
-                    </form>
+                    })
+                }
 
-
-                    <div >
-                        {
-                            profile.slice(0, 1).map(p => {
-                                return <div>
-                                    <p className='font-bold text-primary text-xl'>{p.education}</p>
-                                    <p className='font-bold text-primary text-xl'>{p.location}</p>
-                                    <p className='font-bold text-primary text-xl'>{p.phone}</p>
-                                    <p className='font-bold text-primary text-xl'>{p.linkedin}</p>
-                                </div>
-                            })
-                        }
-
-                    </div>
-                </div>
             </div>
 
+            <div className='grid grid-cols-1'>
+                <form onSubmit={handleSubmit}>
+                    <div class="form-control w-full max-w-xs">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type="text" name='email' value={user.email} class="input input-bordered w-full max-w-xs" />
 
+                    </div>
+                    <div class="form-control w-full max-w-xs">
+                        <label class="label">
+                            <span class="label-text">Education</span>
+                        </label>
+                        <input type="text" name='education' placeholder='Give your education Detail' class="input input-bordered w-full max-w-xs" />
+
+                    </div>
+                    <div class="form-control w-full max-w-xs">
+                        <label class="label">
+                            <span class="label-text">Location</span>
+                        </label>
+                        <input type="text" name='location' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+
+                    </div>
+
+                    <div class="form-control w-full max-w-xs">
+                        <label class="label">
+                            <span class="label-text">Phone Number</span>
+                        </label>
+                        <input type="text" name='phone' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+
+                    </div>
+                    <div class="form-control w-full max-w-xs">
+                        <label class="label">
+                            <span class="label-text">LinkedIn Profile </span>
+                        </label>
+                        <input type="text" name='linkedin' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+
+                    </div>
+
+                    <button className='btn btn-primary ' type='submit'>Update</button>
+                </form>
+            </div>
 
 
         </div>
