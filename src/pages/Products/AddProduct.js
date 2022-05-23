@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const AddProduct = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const product = {

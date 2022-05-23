@@ -14,8 +14,8 @@ const Rating = () => {
         <div>
             <section className='my-28'>
                 <div>
-                    <h2 className='text-xl text-primary font-bold text-center'>Rating</h2>
                     <h3 className='text-3xl text-primary font-bold text-center'>What out Customer say</h3>
+                    <h2 className='text-xl text-primary font-bold text-center'>Rating</h2>
                 </div>
                 <div className='flex justify-between'>
                     <div>
@@ -23,7 +23,7 @@ const Rating = () => {
                     </div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-                    {ratings.slice(0, 3).map(review => <Review
+                    {ratings.slice(0, 6).map(review => <Review
                         key={review._id}
                         review={review}
                     ></Review>)}

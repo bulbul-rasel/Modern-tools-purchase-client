@@ -53,7 +53,7 @@ const Order = () => {
     }
     return (
         <div>
-            <h2 className="text-3xl text-primary text-center">M Order</h2>
+            <h2 className="text-3xl text-primary text-center">My Order</h2>
             <table className="table table-success table-striped">
                 <thead>
                     <tr>

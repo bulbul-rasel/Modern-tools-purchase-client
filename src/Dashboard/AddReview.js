@@ -3,11 +3,12 @@ import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddReview = () => {
     const [user] = useAuthState(auth)
     const navigate = useNavigate()
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -20,6 +21,8 @@ const AddReview = () => {
 
         };
         const { data } = await axios.post("http://localhost:5000/ratings", rating);
+        console.log(data);
+
         if (!data.success) {
             return toast.error(data.error)
         }
@@ -58,7 +61,6 @@ const AddReview = () => {
             </div>
             <div>
                 <select name='rating' class="select w-full max-w-xs mt-4">
-                    <option disabled selected>Rating</option>
                     <option>
                         🧡🧡🧡🧡🧡
                     </option>
@@ -69,6 +71,7 @@ const AddReview = () => {
                 </select>
             </div>
             <button className='btn btn-primary ' type='submit'>Add Review</button>
+            <ToastContainer></ToastContainer>
         </form>
     );
 };
