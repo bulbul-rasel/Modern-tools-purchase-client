@@ -76,6 +76,7 @@ const MyProfile = () => {
             </div>
             <h2 className='text-3xl text-primary text-bold uppercase'> {user.displayName}</h2>
             <h2 className='text-xl text-secondary text-bold '> {user.email}</h2>
+            <p>Please Refresh</p>
             <div >
                 {
                     profile.map(p => {
