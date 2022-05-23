@@ -44,7 +44,7 @@ const Purchase = () => {
         }
 
         toast.success(data.message)
-        navigate('/')
+        navigate('/dashboard/order')
 
 
         console.log(data);

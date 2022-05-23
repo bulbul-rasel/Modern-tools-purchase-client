@@ -18,6 +18,7 @@ import ManageProduct from './Dashboard/ManageProduct';
 import MyOrder from './Dashboard/MyOrder';
 import Users from './Dashboard/Users';
 import RequireAdmin from './authentication/RequireAdmin';
+import Order from './Dashboard/Order';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
             <Route path='addProduct' element={<AddProduct />}></Route>
             <Route path='manageProduct' element={<ManageProduct />}></Route>
             <Route path='myOrder' element={<MyOrder />}></Route>
+            <Route path='order' element={<Order />}></Route>
             <Route path='users' element={<RequireAdmin>
               <Users />
             </RequireAdmin>}></Route>

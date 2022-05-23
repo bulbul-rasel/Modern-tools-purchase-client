@@ -1,16 +1,40 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../firebase.init';
+import { signOut } from 'firebase/auth';
 
-const MyOrder = () => {
+const Order = () => {
     const [bookings, setBookings] = useState([]);
 
+    const [user] = useAuthState(auth);
+    const [myItem, setMyItem] = useState([]);
+    const navigate = useNavigate();
+
     useEffect(() => {
-        fetch('http://localhost:5000/bookings')
-            .then(res => res.json())
-            .then(data => setBookings(data))
-    }, [])
+        const myItem = async () => {
+            const email = user?.email;
+            const url = `http://localhost:5000/myitem?email=${email}`
+            try {
+                const { data } = await axios.get(url, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                setMyItem(data);
+            } catch (error) {
+                toast(error.message);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login')
+                }
+            }
+        }
+        myItem();
+
+    }, [user]);
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure for delete?');
@@ -22,14 +46,14 @@ const MyOrder = () => {
 
                 toast(data.message);
 
-                const remaining = bookings.filter(product => product._id !== id);
-                setBookings(remaining)
+                const remaining = myItem.filter(item => item._id !== id);
+                setMyItem(remaining)
             })()
         }
     }
     return (
         <div>
-            <h2 className="text-3xl text-primary text-center">All Items</h2>
+            <h2 className="text-3xl text-primary text-center">M Order</h2>
             <table className="table table-success table-striped">
                 <thead>
                     <tr>
@@ -44,7 +68,7 @@ const MyOrder = () => {
                 </thead>
                 <tbody>
                     {
-                        bookings.map(product => {
+                        myItem.map(product => {
                             return <tr>
                                 <th>{product.name}</th>
                                 <td>{product.email}</td>
@@ -54,7 +78,7 @@ const MyOrder = () => {
                                 <td>{product.address}</td>
                                 <td style={{ width: "100px" }}>
                                     <Link
-                                        to={'/dashboard/myOrder'}
+                                        to={'/dashboard/order'}
                                         onClick={() => handleDelete(product._id)}
 
                                     >
@@ -72,4 +96,4 @@ const MyOrder = () => {
     );
 };
 
-export default MyOrder;
+export default Order;
