@@ -35,6 +35,7 @@ const AddProduct = () => {
 
     return (
         <div className='grid grid-cols-1'>
+            <h2 className="text-3xl text-primary text-center">Add Product</h2>
             <form onSubmit={handleSubmit}>
                 <div class="form-control w-full max-w-xs">
                     <label class="label">
@@ -83,7 +84,7 @@ const AddProduct = () => {
                     <label class="label">
                         <span class="label-text">Minimum Quantity</span>
                     </label>
-                    <input type="text" name='minimum' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='minimum' value={100} class="input input-bordered w-full max-w-xs" />
 
                 </div>
                 <button className='btn btn-primary ' type='submit'>Add Product</button>

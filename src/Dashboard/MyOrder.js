@@ -27,6 +27,11 @@ const MyOrder = () => {
             })()
         }
     }
+
+    const handleDeliver = (id) => {
+        toast.success("Shipped")
+
+    }
     return (
         <div>
             <h2 className="text-3xl text-primary text-center">All Items</h2>
@@ -40,13 +45,13 @@ const MyOrder = () => {
                         <th scope="col">Price</th>
                         <th scope="col">Address</th>
                         <th scope="col">Action</th>
-                        <th scope="col">Pay</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        bookings.map(product => {
-                            return <tr>
+                        bookings.map((product, index) => {
+                            return <tr key={product._id}>
                                 <th>{product.name}</th>
                                 <td>{product.email}</td>
                                 <td>{product.product}</td>
@@ -54,9 +59,16 @@ const MyOrder = () => {
                                 <td>{product.price}</td>
                                 <td>{product.address}</td>
                                 <td style={{ width: "100px" }}>
-                                    <td><button class="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button></td>
+                                    <td>{(product.price && product.paid) ? <button class="btn btn-xs btn-error" disabled >Delete</button> : <button class="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button>}</td>
                                 </td>
-                                <td><button class="btn btn-xs btn-success" >Payment</button></td>
+                                {/* {<td><button class="btn btn-xs btn-success" >Payment</button></td>} */}
+                                <td>
+                                    {(product.price && !product.paid) && <button class="btn btn-xs btn-error" >Unpaid</button>}
+                                    {(product.price && product.paid) && <div>
+                                        <button class="btn btn-xs btn-success" onClick={() => handleDeliver(product._id)}>Pending</button>
+
+                                    </div>}
+                                </td>
                             </tr>
                         })
                     }

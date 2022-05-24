@@ -39,7 +39,7 @@ const ManageProduct = ({ product }) => {
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Image</th>
-                        <th scope="col">Description</th>
+                        {/* <th scope="col">Description</th> */}
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Minimum Quantity</th>
@@ -52,7 +52,7 @@ const ManageProduct = ({ product }) => {
                             return <tr>
                                 <th>{product.name}</th>
                                 <td style={{ width: "100px" }} ><img className='w-100' src={product.image} alt="" /></td>
-                                <td>{product.description}</td>
+                                {/* <td>{product.description}</td> */}
                                 <td>{product.price}</td>
                                 <td>{product.quantity}</td>
                                 <td>{product.minimum}</td>

@@ -37,7 +37,7 @@ const MyReview = () => {
     }, [user]);
     return (
         <div>
-            <h2 className="text-3xl text-primary text-center">All Items</h2>
+            <h2 className="text-3xl text-primary text-center">My Review</h2>
             <table className="table table-success table-striped">
                 <thead>
                     <tr>

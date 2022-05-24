@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const UserRow = ({ user, index, refetch }) => {
     const { email, role } = user;
+    const [dUser, setdUser] = useState([])
 
     const makeAdmin = () => {
         fetch(`http://localhost:5000/user/admin/${email}`, {
@@ -25,12 +27,29 @@ const UserRow = ({ user, index, refetch }) => {
                 }
             })
     }
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure for delete?');
+        if (proceed) {
+            (async () => {
+                const { data } = await axios.delete(`http://localhost:5000/users/${id}`);
+
+                if (!data.success) return toast.error(data.error)
+
+                toast(data.message);
+
+                const remaining = user.filter(u => u._id !== id);
+                setdUser(remaining)
+                refetch()
+            })()
+        }
+    }
     return (
         <tr>
             <th>{index + 1}</th>
             <td>{email}</td>
             <td>{role !== 'admin' && <button onClick={makeAdmin} class="btn btn-xs btn-success">Make Admin</button>}</td>
-            <td><button class="btn btn-xs btn-warning">Remove User</button></td>
+            <td><button class="btn btn-xs btn-error" onClick={() => handleDelete(user._id)}>Remove User</button></td>
         </tr>
     );
 };

@@ -12,6 +12,7 @@ const AddReview = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        navigate('/')
         const rating = {
             name: event.target.name.value,
             email: event.target.email.value,
@@ -28,13 +29,13 @@ const AddReview = () => {
         }
 
         toast.success(data.message)
-        navigate('/')
 
 
         console.log(data);
     }
     return (
         <div>
+            <h2 className="text-3xl text-primary text-center">Add Review</h2>
             <form onSubmit={handleSubmit}>
                 <div class="form-control w-full max-w-xs">
                     <label class="label">

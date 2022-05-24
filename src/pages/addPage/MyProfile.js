@@ -22,6 +22,7 @@ const MyProfile = () => {
             linkedin: event.target.linkedin.value,
 
         };
+        navigate('/dashboard')
         const { data } = await axios.post("http://localhost:5000/profile", profile);
         console.log(data);
 
@@ -30,7 +31,6 @@ const MyProfile = () => {
         }
 
         toast.success(data.message)
-        navigate('/dashboard/myProfile')
 
         event.target.reset();
         console.log(data);
@@ -76,10 +76,10 @@ const MyProfile = () => {
             </div>
             <h2 className='text-3xl text-primary text-bold uppercase'> {user.displayName}</h2>
             <h2 className='text-xl text-secondary text-bold '> {user.email}</h2>
-            <p>Please Refresh</p>
+
             <div >
                 {
-                    profile.map(p => {
+                    profile.slice(0, 1).map(p => {
                         return <div>
                             <p className='font-bold text-primary text-xl'>{p.education}</p>
                             <p className='font-bold text-primary text-xl'>{p.location}</p>
@@ -130,7 +130,7 @@ const MyProfile = () => {
 
                     </div>
 
-                    <button className='btn btn-primary ' type='submit'>Update</button>
+                    <button className='btn btn-primary mt-5' type='submit'>Update</button>
                 </form>
             </div>
 
