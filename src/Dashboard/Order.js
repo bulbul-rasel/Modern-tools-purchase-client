@@ -76,15 +76,8 @@ const Order = () => {
                                 <td>{product.phone}</td>
                                 <td>{product.price}</td>
                                 <td>{product.address}</td>
-                                <td style={{ width: "100px" }}>
-                                    <Link
-                                        to={'/dashboard/order'}
-                                        onClick={() => handleDelete(product._id)}
 
-                                    >
-                                        DELETE 🗑
-                                    </Link>
-                                </td>
+                                <td><button class="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button></td>
                             </tr>
                         })
                     }

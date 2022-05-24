@@ -23,6 +23,7 @@ import MyReview from './Dashboard/MyReview';
 import Blog from './components/Blog';
 import AddReview from './pages/addPage/AddReview';
 import MyProfile from './pages/addPage/MyProfile';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
           <Route path='/home' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/blog' element={<Blog />}></Route>
