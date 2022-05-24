@@ -7,162 +7,130 @@ import auth from '../../firebase.init';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
-    const navigate = useNavigate();
-
+    const navigate = useNavigate()
+    const [disable, setDisable] = useState(false);
     const { productId } = useParams();
     const [product, setProduct] = useState({});
-    const [newQuantity, setNewQuantity] = useState(0)
-    const [newPrice, setNewPrice] = useState(0)
-    console.log(newQuantity);
-    console.log(newPrice);
-
     useEffect(() => {
         const url = `http://localhost:5000/product/${productId}`;
-        console.log(url);
         fetch(url)
             .then(res => res.json())
-            .then(data => {
-                setProduct(data)
-                setNewQuantity(data.quantity);
-                setNewPrice(data.price);
-                // console.log(data.quantity);
-            })
-    }, [productId]);
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const bookings = {
-            name: event.target.name.value,
-            email: event.target.email.value,
-            product: event.target.product.value,
-            phone: event.target.phone.value,
-            price: event.target.price.value,
-            address: event.target.address.value,
+            .then(data => setProduct(data));
+    }, []);
 
 
-        };
-        const { data } = await axios.post("http://localhost:5000/bookings", bookings);
-        if (!data.success) {
-            return toast.error(data.error)
-        }
 
-        toast.success(data.message)
-        navigate('/dashboard/order')
+    const handleChange = event => {
+        const disable = event.target.value;
 
-
-        console.log(data);
+        setDisable(disable);
     }
 
-    const handleUpdate = (event) => {
+    const handelOrder = event => {
         event.preventDefault();
-        const quantity = event.target.name.value;
-        console.log(quantity);
-        const updatedQuantity = newQuantity - parseInt(quantity);
-        const price = parseInt(quantity) * newPrice;
-        setNewQuantity(updatedQuantity);
-        setNewPrice(price)
-
-        const url = `http://localhost:5000/product/${productId}`;
-        fetch(url, {
-            method: 'PUT',
+        const orders = event.target.orders.value;
+        const address = event.target.address.value;
+        const phone = event.target.number.value;
+        console.log(orders, address, phone);
+        const orderData = {
+            orderId: product._id,
+            product: product.name,
+            orders,
+            email: user.email,
+            name: user.displayName,
+            price: product.price * orders,
+            phone,
+            address
+        }
+        //console.log(orderData);
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ updatedQuantity })
+            body: JSON.stringify(orderData)
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data);
-                toast('Quantity update successfully!!!');
-                event.target.reset();
+                console.log(data);
+                toast(`Your order for ${product.name} is placed`)
             })
+
+        navigate('/dashboard/order')
+
     }
 
-
-
     return (
-        <div className='mt-20 flex justify-center items-center'>
-
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row-reverse">
-                    <div class="text-center lg:text-left">
-                        <div class="card w-96 bg-base-100 shadow-xl">
-                            <figure class="px-10 pt-10">
-                                <img src={product.image} alt="Shoes" class="rounded-xl" />
-                            </figure>
-                            <div class="card-body items-center text-center">
-                                <h2 class="card-title">{product.name}</h2>
-                                <p>{product.description}</p>
-                                <p> Available Quantity: {newQuantity}</p>
-                                <p>Minimum Order: {product.minimum}</p>
-                                <p>Price:{product.price}</p>
-                                <form onSubmit={handleUpdate} class="card-actions">
-                                    <input type="text" name='name' placeholder="Enter Product Quantity" class="input w-full max-w-xs" />
-
-                                    <button class="btn btn-primary w-full" type='submit'>Booked</button>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100  flex justify-center items-center p-10">
-                        <form onSubmit={handleSubmit}>
-                            <div class="form-control w-full max-w-xs">
-                                <label class="label">
-                                    <span class="label-text">Email</span>
-                                </label>
-                                <input type="text" name='email' value={user.email} class="input input-bordered w-full max-w-xs" />
-
-                            </div>
-                            <div class="form-control w-full max-w-xs">
-                                <label class="label">
-                                    <span class="label-text">Name</span>
-                                </label>
-                                <input type="text" name='name' value={user.displayName} class="input input-bordered w-full max-w-xs" />
-
-                            </div>
-
-                            <div class="form-control w-full max-w-xs">
-                                <label class="label">
-                                    <span class="label-text">Product Name.</span>
-                                </label>
-                                <input type="text" name='product' value={product.name} class="input input-bordered w-full max-w-xs" />
-
-                            </div>
-                            <div class="form-control w-full max-w-xs">
-                                <label class="label">
-                                    <span class="label-text">Phone No.</span>
-                                </label>
-                                <input type="text" name='phone' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-
-                            </div>
-                            <div class="form-control w-full max-w-xs">
-                                <label class="label">
-                                    <span class="label-text">Address</span>
-                                </label>
-                                <input type="text" name='address' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-
-                            </div>
-                            <div class="form-control w-full max-w-xs">
-                                <label class="label">
-                                    <span class="label-text">Price</span>
-                                </label>
-                                <input type="text" name='price' value={product.price} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-
-                            </div>
-
-                            <button className='btn btn-primary w-full mt-5' type='submit'>Confirm Purchase</button>
-                        </form>
-                    </div>
-                </div>
+        <div>
+            <div className='mt-5 shadow-lg '>
+                <h3 className='text-center'> Product Detail of {product.name}</h3>
             </div>
+            <form onSubmit={handelOrder} className='w-50   text-center'>
+                <div class="form-control flex items-center">
+                    <label class="label">
+                        <span class="label-text">Your Name</span>
+                    </label>
+                    <input type="text" class="input input-bordered input-primary w-full max-w-xs " value={user.displayName} disabled />
+                </div>
+                <br />
+                <div class="form-control flex items-center">
+                    <label class="label">
+                        <span class="label-text">Your Email</span>
+                    </label>
+                    <input type="text" class="input input-bordered input-primary w-full max-w-xs " value={user.email} disabled />
+                </div>
+                <br />
+                <div class="form-control flex items-center">
+                    <label class="label">
+                        <span class="label-text">Material name</span>
+                    </label>
+                    <input type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs " value={product.name} disabled />
+                </div>
+                <br />
+                <div class="form-control flex items-center">
+                    <label class="label">
+                        <span class="label-text">Price per Material</span>
+                    </label>
+                    <input type="text" name='price' placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs " value={product.price} disabled />
+                </div>
+                <br />
+                <div class="form-control flex items-center">
+                    <label class="label">
+                        <span class="label-text">Quantities Left</span>
+                    </label>
+                    <input type="text" name='quantity' placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs " value={product.quantity} disabled />
+                </div>
+                <br />
+                <div class="form-control flex items-center">
+                    <label class="label">
+                        <span class="label-text">Phone number</span>
+                    </label>
+                    <input type="text" name='number' placeholder="Phone number" class="input input-bordered input-primary w-full max-w-xs " />
+                </div>
+                <br />
+                <div class="form-control flex items-center">
+                    <label class="label">
+                        <span class="label-text">Your address</span>
+                    </label>
+                    <input type="text" name='address' placeholder="Address" class="input input-bordered input-primary w-full max-w-xs " />
+                </div>
+                <br />
+                <div class="form-control flex items-center">
+                    <label class="label">
+                        <span class="label-text">Your Order</span>
+                    </label>
+                    <input type="number" name='orders' onChange={handleChange} placeholder="Mininum 100 order required" class="input input-bordered input-primary w-full max-w-xs " />
+                </div>
+                <br />
+
+                <input className='btn btn-info my-4 fw-bold shadow' type="submit"
+                    disabled={disable < 100 || disable >= product.total_quantity}
+                    value="Purchase" />
+
+            </form>
+
+
         </div>
-
-
-
-
-
     );
 };
-
 export default Purchase;
