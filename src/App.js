@@ -24,6 +24,7 @@ import Blog from './components/Blog';
 import AddReview from './pages/addPage/AddReview';
 import MyProfile from './pages/addPage/MyProfile';
 import NotFound from './components/NotFound';
+import Payment from './Dashboard/Payment';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
             <Route path='addReview' element={<AddReview />}></Route>
             <Route path='myOrder' element={<MyOrder />}></Route>
             <Route path='order' element={<Order />}></Route>
+            <Route path='payment/:id' element={<Payment />}></Route>
             <Route path='users' element={<RequireAdmin>
               <Users />
             </RequireAdmin>}></Route>

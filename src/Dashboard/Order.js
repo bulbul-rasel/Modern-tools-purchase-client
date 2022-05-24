@@ -64,20 +64,28 @@ const Order = () => {
                         <th scope="col">Price</th>
                         <th scope="col">Address</th>
                         <th scope="col">Action</th>
+                        <th scope="col">Pay</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        myItem.map(product => {
-                            return <tr>
+                        myItem.map((product, index) => {
+                            return <tr key={product._id}>
                                 <th>{product.name}</th>
                                 <td>{product.email}</td>
                                 <td>{product.product}</td>
                                 <td>{product.phone}</td>
                                 <td>{product.price}</td>
                                 <td>{product.address}</td>
+                                <td>{(product.price && product.paid) ? <button class="btn btn-xs btn-error" disabled >Delete</button> : <button class="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button>}</td>
+                                <td>
+                                    {(product.price && !product.paid) && <Link to={`/dashboard/payment/${product._id}`}><button class="btn btn-xs btn-success" >Payment</button></Link>}
+                                    {(product.price && product.paid) && <div>
+                                        <span class="text-success" >Processing...</span>
+                                        <p><span className='text-success'> {product.transictionId}</span></p>
+                                    </div>}
+                                </td>
 
-                                <td><button class="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button></td>
                             </tr>
                         })
                     }

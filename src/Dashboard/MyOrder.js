@@ -40,6 +40,7 @@ const MyOrder = () => {
                         <th scope="col">Price</th>
                         <th scope="col">Address</th>
                         <th scope="col">Action</th>
+                        <th scope="col">Pay</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,14 +54,9 @@ const MyOrder = () => {
                                 <td>{product.price}</td>
                                 <td>{product.address}</td>
                                 <td style={{ width: "100px" }}>
-                                    <Link
-                                        to={'/dashboard/myOrder'}
-                                        onClick={() => handleDelete(product._id)}
-
-                                    >
-                                        DELETE 🗑
-                                    </Link>
+                                    <td><button class="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button></td>
                                 </td>
+                                <td><button class="btn btn-xs btn-success" >Payment</button></td>
                             </tr>
                         })
                     }
