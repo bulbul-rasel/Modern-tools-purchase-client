@@ -91,11 +91,11 @@ const Order = () => {
                                 <div class="modal">
                                     <div class="modal-box relative">
 
-                                        <h3 class="text-lg font-bold">Hey!! {product?.name} Are You Sure Want to Cancel This Order?</h3>
+                                        <h3 class="text-lg font-bold">Hey!! <span className='text-primary'> {product?.name}</span> Are You Sure Want to Delete This Order?</h3>
 
-                                        <label for="my-modal-3" class="btn btn-xs btn-warning absolute left-2 bottom-2">No</label>
+                                        <label for="my-modal-3" class="btn btn-sm btn-warning absolute left-2 bottom-2">No</label>
                                         <div class="modal-action">
-                                            <button onClick={() => handleDelete(product?._id)} class="btn btn-xs btn-error">Yes</button>
+                                            <button onClick={() => handleDelete(product?._id)} class="btn btn-sm btn-error">Yes</button>
                                         </div>
                                     </div>
                                 </div>

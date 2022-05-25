@@ -45,7 +45,7 @@ const Profile = () => {
         <div className='m-10 gap-20 grid grid-cols-1 lg:grid-cols-2 p-10'>
 
             <div className="card w-96 bg-base-100 shadow-xl">
-                <h1 className='text-2xl text-primary'>WellCome {user?.displayName}!!</h1>
+                <h1 className='text-2xl text-primary'>Welcome {user?.displayName}!!</h1>
                 <div className="avatar">
                     <div className="w-24 mx-4 my-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src="https://i.ibb.co/T2fNDQK/217878g.jpg" />

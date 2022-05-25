@@ -13,19 +13,17 @@ const MyOrder = () => {
     }, [])
 
     const handleDelete = (id) => {
-        const proceed = window.confirm('Are you sure for delete?');
-        if (proceed) {
-            (async () => {
-                const { data } = await axios.delete(`http://localhost:5000/bookings/${id}`);
 
-                if (!data.success) return toast.error(data.error)
+        (async () => {
+            const { data } = await axios.delete(`http://localhost:5000/bookings/${id}`);
 
-                toast(data.message);
+            if (!data.success) return toast.error(data.error)
 
-                const remaining = bookings.filter(product => product._id !== id);
-                setBookings(remaining)
-            })()
-        }
+            toast(data.message);
+
+            const remaining = bookings.filter(product => product._id !== id);
+            setBookings(remaining)
+        })()
     }
 
     const handleDeliver = (id) => {
@@ -58,8 +56,23 @@ const MyOrder = () => {
                                 <td>{product.phone}</td>
                                 <td>{product.price}</td>
                                 <td>{product.address}</td>
-                                <td style={{ width: "100px" }}>
-                                    <td>{(product.price && product.paid) ? <button className="btn btn-xs btn-error" disabled >Delete</button> : <button className="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button>}</td>
+                                <td >
+                                    {/* {(product.price && product.paid) ? <button className="btn btn-xs btn-error" disabled >Delete</button> : <button className="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button>} */}
+
+                                    {(product.price && !product.paid) && <label for="my-modal-3" class="btn btn-xs btn-error modal-button" >Delete</label>}
+                                    <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+                                    <div class="modal">
+                                        <div class="modal-box relative">
+
+                                            <h3 class="text-lg font-bold">Hey!! <span className='text-primary'> Admin,</span> Are You Sure Want to Delete This Order?</h3>
+
+                                            <label for="my-modal-3" class="btn btn-sm btn-warning absolute left-2 bottom-2">No</label>
+                                            <div class="modal-action">
+                                                <button onClick={() => handleDelete(product?._id)} class="btn btn-sm btn-error">Yes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </td>
                                 {/* {<td><button className="btn btn-xs btn-success" >Payment</button></td>} */}
                                 <td>

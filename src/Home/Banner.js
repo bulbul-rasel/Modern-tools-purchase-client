@@ -1,5 +1,4 @@
 import React from 'react';
-import PrimaryButton from '../components/PrimaryButton';
 import banner from '../assets/banner.png'
 
 const Banner = () => {
@@ -9,7 +8,7 @@ const Banner = () => {
                 <img src={banner} className="w-full max-w-xs rounded-lg shadow-2xl" alt='' />
                 <div>
                     <h1 className="text-5xl font-bold text-primary">Your Daily Life Easier Here</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p className="py-6">For daily life, handy tools are necessary for all ages. Any types of works it made it easier...</p>
                     <button className='btn btn-primary'>Get Started</button>
                 </div>
             </div>

@@ -53,7 +53,7 @@ const MyReview = () => {
                     {
                         reviews.map(r => {
                             return <tr>
-                                <td><img style={{ width: "100px" }} src={r.image} alt="" /></td>
+                                <td><img style={{ width: "50px" }} src={r.image} alt="" /></td>
                                 <td>{r.name}</td>
                                 <td>{r.email}</td>
                                 <td>{r.description}</td>

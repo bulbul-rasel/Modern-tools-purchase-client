@@ -2,12 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import DeleteModal from './DeleteModal';
 
 const ManageProduct = ({ product }) => {
-    // const { name, image, description, price, quantity, minimum } = product;
     const [products, setProducts] = useState([]);
-    const [deleteModal, setDeleteModal] = useState(null)
 
     useEffect(() => {
         fetch('http://localhost:5000/products')
@@ -66,9 +63,7 @@ const ManageProduct = ({ product }) => {
 
                 </tbody>
             </table>
-            {
-                deleteModal && <DeleteModal setDeleteModal={setDeleteModal}></DeleteModal>
-            }
+
         </div>
     );
 };
