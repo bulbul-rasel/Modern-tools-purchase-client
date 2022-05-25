@@ -11,7 +11,7 @@ const Rating = () => {
             .then(data => setRatings(data))
     }, [])
     return (
-        <div>
+        <div >
             <section className='my-28'>
                 <div>
                     <h3 className='text-3xl text-primary font-bold text-center'>What our Customer say</h3>

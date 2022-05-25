@@ -47,7 +47,7 @@ const Profile = () => {
             <div class="card w-96 bg-base-100 shadow-xl">
                 <h1 className='text-2xl text-primary'>WellCome {user?.displayName}!!</h1>
                 <div class="avatar">
-                    <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div class="w-24 mx-4 my-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src="https://i.ibb.co/T2fNDQK/217878g.jpg" />
                     </div>
                 </div>

@@ -25,6 +25,7 @@ import AddReview from './pages/addPage/AddReview';
 import NotFound from './components/NotFound';
 import Payment from './Dashboard/Payment';
 import Profile from './Dashboard/Profile';
+import Extra from './components/Extra';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           <Route path='/home' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/blog' element={<Blog />}></Route>
+          <Route path='/extra' element={<Extra />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/product/:productId' element={<RequireAuth>
             <Purchase />

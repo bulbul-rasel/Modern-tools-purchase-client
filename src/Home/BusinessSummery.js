@@ -7,7 +7,7 @@ import project from '../assets/project.png'
 
 const BusinessSummery = () => {
     return (
-        <div>
+        <div >
             <h3 className='text-center text-secondary text-5xl font-extrabold font-sans pb-20'>Millions Business Trust us</h3>
             <div className='grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5'>
                 <BusinessInfoCard bgClass='bg-primary' cardTitle="72" cardDes="Countries" img={world}></BusinessInfoCard>

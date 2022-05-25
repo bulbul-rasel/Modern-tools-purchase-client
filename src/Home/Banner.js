@@ -4,7 +4,7 @@ import banner from '../assets/banner.png'
 
 const Banner = () => {
     return (
-        <div className="hero min-h-screen ">
+        <div data-aos="fade-up" className="hero min-h-screen ">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img src={banner} className="w-full max-w-xs rounded-lg shadow-2xl" alt='' />
                 <div>
