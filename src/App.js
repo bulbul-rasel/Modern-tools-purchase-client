@@ -22,9 +22,9 @@ import Order from './Dashboard/Order';
 import MyReview from './Dashboard/MyReview';
 import Blog from './components/Blog';
 import AddReview from './pages/addPage/AddReview';
-import MyProfile from './pages/addPage/MyProfile';
 import NotFound from './components/NotFound';
 import Payment from './Dashboard/Payment';
+import Profile from './Dashboard/Profile';
 
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
               <Dashboard></Dashboard>
             </RequireAuth>
           }>
-            <Route path='myProfile' element={<MyProfile />}></Route>
+            <Route path='profile' element={<Profile />}></Route>
             <Route path='addProduct' element={<AddProduct />}></Route>
             <Route path='manageProduct' element={<ManageProduct />}></Route>
             <Route path='myReview' element={<MyReview />}></Route>
