@@ -52,20 +52,20 @@ const MyOrder = () => {
                     {
                         bookings.map((product, index) => {
                             return <tr key={product._id}>
-                                <th>{product.name}</th>
+                                <td>{product.name}</td>
                                 <td>{product.email}</td>
                                 <td>{product.product}</td>
                                 <td>{product.phone}</td>
                                 <td>{product.price}</td>
                                 <td>{product.address}</td>
                                 <td style={{ width: "100px" }}>
-                                    <td>{(product.price && product.paid) ? <button class="btn btn-xs btn-error" disabled >Delete</button> : <button class="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button>}</td>
+                                    <td>{(product.price && product.paid) ? <button className="btn btn-xs btn-error" disabled >Delete</button> : <button className="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button>}</td>
                                 </td>
-                                {/* {<td><button class="btn btn-xs btn-success" >Payment</button></td>} */}
+                                {/* {<td><button className="btn btn-xs btn-success" >Payment</button></td>} */}
                                 <td>
-                                    {(product.price && !product.paid) && <button class="btn btn-xs btn-error" >Unpaid</button>}
+                                    {(product.price && !product.paid) && <button className="btn btn-xs btn-error" >Unpaid</button>}
                                     {(product.price && product.paid) && <div>
-                                        <button class="btn btn-xs btn-success" onClick={() => handleDeliver(product._id)}>Pending</button>
+                                        <button className="btn btn-xs btn-success" onClick={() => handleDeliver(product._id)}>Pending</button>
 
                                     </div>}
                                 </td>

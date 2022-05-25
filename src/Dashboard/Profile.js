@@ -44,17 +44,17 @@ const Profile = () => {
     return (
         <div className='m-10 gap-20 grid grid-cols-1 lg:grid-cols-2 p-10'>
 
-            <div class="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-base-100 shadow-xl">
                 <h1 className='text-2xl text-primary'>WellCome {user?.displayName}!!</h1>
-                <div class="avatar">
-                    <div class="w-24 mx-4 my-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <div className="avatar">
+                    <div className="w-24 mx-4 my-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img src="https://i.ibb.co/T2fNDQK/217878g.jpg" />
                     </div>
                 </div>
                 <h2 className='text-3xl text-primary text-bold uppercase'> {user.displayName}</h2>
                 <h2 className='text-xl text-secondary text-bold '> {user.email}</h2>
-                <div class="card-body items-center text-center">
-                    {/* <h2 class="card-title">Name:{user?.displayName}</h2>
+                <div className="card-body items-center text-center">
+                    {/* <h2 className="card-title">Name:{user?.displayName}</h2>
                     <p>Email:{user?.email}</p> */}
                     <ProfileInfo isRealod={isRealod}></ProfileInfo>
                 </div>
@@ -63,41 +63,41 @@ const Profile = () => {
                 <form onSubmit={addInfo}>
 
 
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">email</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">email</span>
                         </label>
-                        <input type="text" value={user?.email} placeholder="Education Qualification here" class="input input-bordered w-full" />
+                        <input type="text" value={user?.email} placeholder="Education Qualification here" className="input input-bordered w-full" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Education</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Education</span>
                         </label>
-                        <input type="text" name="education" placeholder="Education Qualification here" class="input input-bordered w-full" />
+                        <input type="text" name="education" placeholder="Education Qualification here" className="input input-bordered w-full" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Location</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Location</span>
                         </label>
-                        <input type="text" name='location' placeholder="Your City here" class="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='location' placeholder="Your City here" className="input input-bordered w-full max-w-xs" />
 
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Phone No</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Phone No</span>
                         </label>
-                        <input type="number" name='number' placeholder="Your Contact No  here" class="input input-bordered w-full max-w-xs" />
+                        <input type="number" name='number' placeholder="Your Contact No  here" className="input input-bordered w-full max-w-xs" />
 
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">LinkedIn Profile</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">LinkedIn Profile</span>
                         </label>
-                        <input type="text" name='linkdin' placeholder="Your Linkdin here" class="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='linkdin' placeholder="Your Linkdin here" className="input input-bordered w-full max-w-xs" />
 
                     </div>
-                    <div class="form-control mt-6">
-                        <button class="btn btn-primary">Save</button>
+                    <div className="form-control mt-6">
+                        <button className="btn btn-primary">Save</button>
                     </div>
 
 

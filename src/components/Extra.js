@@ -17,9 +17,9 @@ const Extra = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 mx-10'>
                 <div className='grid grid-cols-1'>
                     <form onSubmit={handleCheckout}>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full " required />
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full my-2" required />
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full " required />
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full " required />
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full my-2" required />
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full " required />
                         <input
                             className='w-full btn btn-primary my-2'
                             type="submit"

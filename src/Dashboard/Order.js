@@ -37,19 +37,20 @@ const Order = () => {
     }, [user]);
 
     const handleDelete = (id) => {
-        const proceed = window.confirm('Are you sure for delete?');
-        if (proceed) {
-            (async () => {
-                const { data } = await axios.delete(`http://localhost:5000/bookings/${id}`);
+        // const proceed = window.confirm('Are you sure for delete?');
+        // if (proceed) {
 
-                if (!data.success) return toast.error(data.error)
+        // }
+        (async () => {
+            const { data } = await axios.delete(`http://localhost:5000/bookings/${id}`);
 
-                toast(data.message);
+            if (!data.success) return toast.error(data.error)
 
-                const remaining = myItem.filter(item => item._id !== id);
-                setMyItem(remaining)
-            })()
-        }
+            toast(data.message);
+
+            const remaining = myItem.filter(item => item._id !== id);
+            setMyItem(remaining)
+        })()
     }
     return (
         <div>
@@ -58,30 +59,50 @@ const Order = () => {
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
+                        {/* <th scope="col">Email</th> */}
                         <th scope="col">Product</th>
-                        <th scope="col">Phone</th>
+                        {/* <th scope="col">Phone</th> */}
                         <th scope="col">Price</th>
                         <th scope="col">Address</th>
                         <th scope="col">Action</th>
+                        <th scope="col"></th>
                         <th scope="col">Pay</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         myItem.map((product, index) => {
-                            return <tr key={product._id}>
-                                <th>{product.name}</th>
-                                <td>{product.email}</td>
+                            return <tr key={index._id}>
+                                <td>{product.name}</td>
+                                {/* <td>{product.email}</td> */}
                                 <td>{product.product}</td>
-                                <td>{product.phone}</td>
+                                {/* <td>{product.phone}</td> */}
                                 <td>{product.price}</td>
                                 <td>{product.address}</td>
-                                <td>{(product.price && product.paid) ? <button class="btn btn-xs btn-error" disabled >Delete</button> : <button class="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button>}</td>
+                                {/* <td>{(product.price && product.paid) ? <button className="btn btn-xs btn-error" disabled >Delete</button> : <button className="btn btn-xs btn-error" onClick={() => handleDelete(product._id)}>Delete</button>}</td> */}
+
                                 <td>
-                                    {(product.price && !product.paid) && <Link to={`/dashboard/payment/${product._id}`}><button class="btn btn-xs btn-success" >Payment</button></Link>}
+                                    {(product.price && !product.paid) && <label for="my-modal-3" class="btn btn-xs btn-error modal-button" >Delete</label>}
+                                </td>
+
+
+
+                                <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+                                <div class="modal">
+                                    <div class="modal-box relative">
+
+                                        <h3 class="text-lg font-bold">Hey!! {product?.name} Are You Sure Want to Cancel This Order?</h3>
+
+                                        <label for="my-modal-3" class="btn btn-xs btn-warning absolute left-2 bottom-2">No</label>
+                                        <div class="modal-action">
+                                            <button onClick={() => handleDelete(product?._id)} class="btn btn-xs btn-error">Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <td>
+                                    {(product.price && !product.paid) && <Link to={`/dashboard/payment/${product._id}`}><button className="btn btn-xs btn-success" >Payment</button></Link>}
                                     {(product.price && product.paid) && <div>
-                                        <span class="text-success" >Processing...</span>
+                                        <span className="text-success" >Processing...</span>
                                         <p><span className='text-success'> {product.transictionId}</span></p>
                                     </div>}
                                 </td>

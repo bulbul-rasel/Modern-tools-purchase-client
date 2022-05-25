@@ -37,32 +37,32 @@ const AddReview = () => {
         <div>
             <h2 className="text-3xl text-primary text-center">Add Review</h2>
             <form onSubmit={handleSubmit}>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Name</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Name</span>
                     </label>
-                    <input type="text" name='name' value={user.displayName} class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='name' value={user.displayName} className="input input-bordered w-full max-w-xs" />
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Name</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Name</span>
                     </label>
-                    <input type="text" name='email' value={user.email} class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='email' value={user.email} className="input input-bordered w-full max-w-xs" />
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Description</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Description</span>
                     </label>
-                    <input type="text" name='description' placeholder="Type here Something" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='description' placeholder="Type here Something" className="input input-bordered w-full max-w-xs" />
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Image</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Image</span>
                     </label>
-                    <input type="text" name="image" placeholder="Send Image link" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name="image" placeholder="Send Image link" className="input input-bordered w-full max-w-xs" />
                 </div>
                 <div>
-                    <select name='rating' class="select w-full max-w-xs mt-4">
+                    <select name='rating' className="select w-full max-w-xs mt-4">
                         <option>
                             🧡🧡🧡🧡🧡
                         </option>

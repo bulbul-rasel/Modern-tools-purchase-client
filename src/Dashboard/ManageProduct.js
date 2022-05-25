@@ -50,7 +50,7 @@ const ManageProduct = ({ product }) => {
                     {
                         products.map(product => {
                             return <tr>
-                                <th>{product.name}</th>
+                                <td>{product.name}</td>
                                 <td style={{ width: "100px" }} ><img className='w-100' src={product.image} alt="" /></td>
                                 {/* <td>{product.description}</td> */}
                                 <td>{product.price}</td>
@@ -58,7 +58,7 @@ const ManageProduct = ({ product }) => {
                                 <td>{product.minimum}</td>
 
                                 <td>
-                                    <label for="my-modal-6" onClick={() => handleDelete(product._id)} class="btn btn-xs btn-error modal-button">Delete</label>
+                                    <label htmlFor="my-modal-6" onClick={() => handleDelete(product._id)} className="btn btn-xs btn-error modal-button">Delete</label>
                                 </td>
                             </tr>
                         })

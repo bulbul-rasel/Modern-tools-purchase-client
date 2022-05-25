@@ -68,63 +68,63 @@ const Purchase = () => {
                     <h3 className='text-center text-4xl text-primary font-bold mb-5'>{product.name}</h3>
                     <img src={product.image} alt="" />
                 </div>
-                <div class="divider lg:divider-horizontal">OR</div>
+                <div className="divider lg:divider-horizontal">OR</div>
                 <div>
                     <form onSubmit={handelOrder} className=' w-full text-center'>
-                        <div class="form-control flex items-center">
-                            <label class="label">
-                                <span class="label-text">Name</span>
+                        <div className="form-control flex items-center">
+                            <label className="label">
+                                <span className="label-text">Name</span>
                             </label>
-                            <input type="text" class="input input-bordered input-primary w-full max-w-xs " value={user.displayName} disabled />
+                            <input type="text" className="input input-bordered input-primary w-full max-w-xs " value={user.displayName} disabled />
                         </div>
                         <br />
-                        <div class="form-control flex items-center">
-                            <label class="label">
-                                <span class="label-text">Email</span>
+                        <div className="form-control flex items-center">
+                            <label className="label">
+                                <span className="label-text">Email</span>
                             </label>
-                            <input type="text" class="input input-bordered input-primary w-full max-w-xs " value={user.email} disabled />
+                            <input type="text" className="input input-bordered input-primary w-full max-w-xs " value={user.email} disabled />
                         </div>
                         <br />
-                        <div class="form-control flex items-center">
-                            <label class="label">
-                                <span class="label-text">Material name</span>
+                        <div className="form-control flex items-center">
+                            <label className="label">
+                                <span className="label-text">Material name</span>
                             </label>
-                            <input type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs " value={product.name} disabled />
+                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs " value={product.name} disabled />
                         </div>
                         <br />
-                        <div class="form-control flex items-center">
-                            <label class="label">
-                                <span class="label-text">Unit Price </span>
+                        <div className="form-control flex items-center">
+                            <label className="label">
+                                <span className="label-text">Unit Price </span>
                             </label>
-                            <input type="text" name='price' placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs " value={product.price} disabled />
+                            <input type="text" name='price' placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs " value={product.price} disabled />
                         </div>
                         <br />
-                        <div class="form-control flex items-center">
-                            <label class="label">
-                                <span class="label-text">Available Quantity</span>
+                        <div className="form-control flex items-center">
+                            <label className="label">
+                                <span className="label-text">Available Quantity</span>
                             </label>
-                            <input type="text" name='quantity' placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs " value={product.quantity} disabled />
+                            <input type="text" name='quantity' placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs " value={product.quantity} disabled />
                         </div>
                         <br />
-                        <div class="form-control flex items-center">
-                            <label class="label">
-                                <span class="label-text">Phone number</span>
+                        <div className="form-control flex items-center">
+                            <label className="label">
+                                <span className="label-text">Phone number</span>
                             </label>
-                            <input type="text" name='number' placeholder="Phone number" class="input input-bordered input-primary w-full max-w-xs " />
+                            <input type="text" name='number' placeholder="Phone number" className="input input-bordered input-primary w-full max-w-xs " />
                         </div>
                         <br />
-                        <div class="form-control flex items-center">
-                            <label class="label">
-                                <span class="label-text">Your address</span>
+                        <div className="form-control flex items-center">
+                            <label className="label">
+                                <span className="label-text">Your address</span>
                             </label>
-                            <input type="text" name='address' placeholder="Address" class="input input-bordered input-primary w-full max-w-xs " />
+                            <input type="text" name='address' placeholder="Address" className="input input-bordered input-primary w-full max-w-xs " />
                         </div>
                         <br />
-                        <div class="form-control flex items-center">
-                            <label class="label">
-                                <span class="label-text">Order Quantity</span>
+                        <div className="form-control flex items-center">
+                            <label className="label">
+                                <span className="label-text">Order Quantity</span>
                             </label>
-                            <input type="number" name='orders' onChange={handleChange} placeholder="Mininum 100 order required" class="input input-bordered input-primary w-full max-w-xs " />
+                            <input type="number" name='orders' onChange={handleChange} placeholder="Mininum 100 order required" className="input input-bordered input-primary w-full max-w-xs " />
                         </div>
                         <br />
 

@@ -37,54 +37,54 @@ const AddProduct = () => {
         <div className='grid grid-cols-1'>
             <h2 className="text-3xl text-primary text-center">Add Product</h2>
             <form onSubmit={handleSubmit}>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Email</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Email</span>
                     </label>
-                    <input type="text" name='email' value={user.email} class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='email' value={user.email} className="input input-bordered w-full max-w-xs" />
 
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Product name</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Product name</span>
                     </label>
-                    <input type="text" name='name' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
 
                 </div>
 
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Image</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Image</span>
                     </label>
-                    <input type="text" name='image' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='image' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
 
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Description</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Description</span>
                     </label>
-                    <input type="text" name='description' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='description' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
 
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Price</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Price</span>
                     </label>
-                    <input type="text" name='price' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='price' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
 
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Quantity</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Quantity</span>
                     </label>
-                    <input type="text" name='quantity' placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='quantity' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
 
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                        <span class="label-text">Minimum Quantity</span>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Minimum Quantity</span>
                     </label>
-                    <input type="text" name='minimum' value={100} class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='minimum' value={100} className="input input-bordered w-full max-w-xs" />
 
                 </div>
                 <button className='btn btn-primary ' type='submit'>Add Product</button>
