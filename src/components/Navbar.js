@@ -3,10 +3,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
 import auth from '../firebase.init';
 import { signOut } from 'firebase/auth';
+import useAdmin from '../hookes/UseAdmin';
 
 const Navbar = ({ children }) => {
     const [dark, setDark] = useState(false);
     const [user, loading, error] = useAuthState(auth);
+    const [admin] = useAdmin(user)
     const logOut = () => {
         signOut(auth)
         localStorage.removeItem('accessToken')
@@ -75,8 +77,9 @@ const Navbar = ({ children }) => {
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
 
                     <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
-                    <li><NavLink className='rounded-lg' to='/myProfile'>My Profile </NavLink></li>
                     <li><NavLink className='rounded-lg' to='/blog'>Blog</NavLink></li>
+                    <li><NavLink className='rounded-lg' to='/extra'>Subscribe</NavLink></li>
+                    <li><NavLink className='rounded-lg' to='/portfolio'>My Portfolio</NavLink></li>
                     {
                         user && <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                     }
@@ -101,8 +104,19 @@ const Navbar = ({ children }) => {
 
                         </div>
                         <div className="collapse-content">
-                            <li><NavLink className='rounded-lg' to='/services'>Quick Book</NavLink></li>
-                            <li><NavLink className='rounded-lg' to='/login'>Pre Book</NavLink></li>
+                            <li><Link to='/dashboard'>Dashboard</Link></li>
+                            <li><Link to='/dashboard/profile'>My profile</Link></li>
+                            <li><Link to='/dashboard/myReview'>My Review</Link></li>
+                            <li><Link to='/dashboard/addReview'>Add Review</Link></li>
+                            <li><Link to='/dashboard/order'>My Order</Link></li>
+
+                            {admin && <>
+                                <li><Link to='/dashboard/myOrder'>Manage Order</Link></li>
+                                <li><Link to='/dashboard/users'>Make Admin</Link></li>
+                                <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
+                                <li><Link to='/dashboard/manageProduct'>Manage Product</Link></li>
+
+                            </>}
                         </div>
                     </div>
                 </ul>
