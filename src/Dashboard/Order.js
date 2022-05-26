@@ -16,7 +16,7 @@ const Order = () => {
     useEffect(() => {
         const myItem = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/myitem?email=${email}`
+            const url = `https://limitless-depths-18541.herokuapp.com/myitem?email=${email}`
             try {
                 const { data } = await axios.get(url, {
                     headers: {
@@ -42,7 +42,7 @@ const Order = () => {
 
         // }
         (async () => {
-            const { data } = await axios.delete(`http://localhost:5000/bookings/${id}`);
+            const { data } = await axios.delete(`https://limitless-depths-18541.herokuapp.com/bookings/${id}`);
 
             if (!data.success) return toast.error(data.error)
 

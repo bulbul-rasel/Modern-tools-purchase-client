@@ -16,7 +16,7 @@ const MyReview = () => {
     useEffect(() => {
         const myReview = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/myReview?email=${email}`
+            const url = `https://limitless-depths-18541.herokuapp.com/myReview?email=${email}`
             try {
                 const { data } = await axios.get(url, {
                     headers: {

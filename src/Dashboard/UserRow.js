@@ -7,7 +7,7 @@ const UserRow = ({ user, index, refetch }) => {
     const [dUser, setdUser] = useState([])
 
     const makeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://limitless-depths-18541.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +32,7 @@ const UserRow = ({ user, index, refetch }) => {
         const proceed = window.confirm('Are you sure for delete?');
         if (proceed) {
             (async () => {
-                const { data } = await axios.delete(`http://localhost:5000/users/${id}`);
+                const { data } = await axios.delete(`https://limitless-depths-18541.herokuapp.com/users/${id}`);
 
                 if (!data.success) return toast.error(data.error)
 

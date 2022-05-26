@@ -7,7 +7,7 @@ const ManageProduct = ({ product }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://limitless-depths-18541.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -16,7 +16,7 @@ const ManageProduct = ({ product }) => {
         const proceed = window.confirm('Are you sure for delete?');
         if (proceed) {
             (async () => {
-                const { data } = await axios.delete(`http://localhost:5000/products/${id}`);
+                const { data } = await axios.delete(`https://limitless-depths-18541.herokuapp.com/products/${id}`);
 
                 if (!data.success) return toast.error(data.error)
 

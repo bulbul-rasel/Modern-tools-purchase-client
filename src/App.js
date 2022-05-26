@@ -26,6 +26,7 @@ import NotFound from './components/NotFound';
 import Payment from './Dashboard/Payment';
 import Profile from './Dashboard/Profile';
 import Extra from './components/Extra';
+import MyPortfolio from './components/MyPortfolio';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path='/login' element={<Login />}></Route>
           <Route path='/blog' element={<Blog />}></Route>
           <Route path='/extra' element={<Extra />}></Route>
+          <Route path='/portfolio' element={<MyPortfolio />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/product/:productId' element={<RequireAuth>
             <Purchase />

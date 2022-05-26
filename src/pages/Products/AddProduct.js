@@ -21,7 +21,7 @@ const AddProduct = () => {
             minimum: parseFloat(event.target.minimum.value),
 
         };
-        const { data } = await axios.post("http://localhost:5000/products", product);
+        const { data } = await axios.post("https://limitless-depths-18541.herokuapp.com/products", product);
         if (!data.success) {
             return toast.error(data.error)
         }

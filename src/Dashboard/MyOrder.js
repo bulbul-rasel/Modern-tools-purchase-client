@@ -7,7 +7,7 @@ const MyOrder = () => {
     const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/bookings')
+        fetch('https://limitless-depths-18541.herokuapp.com/bookings')
             .then(res => res.json())
             .then(data => setBookings(data))
     }, [])
@@ -15,7 +15,7 @@ const MyOrder = () => {
     const handleDelete = (id) => {
 
         (async () => {
-            const { data } = await axios.delete(`http://localhost:5000/bookings/${id}`);
+            const { data } = await axios.delete(`https://limitless-depths-18541.herokuapp.com/bookings/${id}`);
 
             if (!data.success) return toast.error(data.error)
 

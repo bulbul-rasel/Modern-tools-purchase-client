@@ -14,7 +14,7 @@ const ProfileInfo = ({ isRealod }) => {
         const email = user?.email
         console.log(email)
 
-        fetch(`http://localhost:5000/profileInfo?email=${email}`)
+        fetch(`https://limitless-depths-18541.herokuapp.com/profileInfo?email=${email}`)
             .then(res => res.json())
             .then(data => {
 

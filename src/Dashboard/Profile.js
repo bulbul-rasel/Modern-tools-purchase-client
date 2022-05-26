@@ -20,7 +20,7 @@ const Profile = () => {
         const info = { education, location, number, linkdin, email }
         console.log(info);
         navigate('/dashboard/profile')
-        fetch(`http://localhost:5000/profile/${email}`, {
+        fetch(`https://limitless-depths-18541.herokuapp.com/profile/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

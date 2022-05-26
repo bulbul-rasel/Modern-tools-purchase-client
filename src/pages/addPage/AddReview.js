@@ -21,7 +21,7 @@ const AddReview = () => {
             rating: event.target.rating.value,
 
         };
-        const { data } = await axios.post("http://localhost:5000/ratings", rating);
+        const { data } = await axios.post("https://limitless-depths-18541.herokuapp.com/ratings", rating);
         console.log(data);
 
         if (!data.success) {

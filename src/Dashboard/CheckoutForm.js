@@ -13,7 +13,7 @@ const CheckoutForm = ({ product }) => {
     const { _id, price, products, name } = product;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://limitless-depths-18541.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -78,7 +78,7 @@ const CheckoutForm = ({ product }) => {
                 transictionId: transictionId.id
             }
 
-            fetch(`http://localhost:5000/booking/${_id}`, {
+            fetch(`https://limitless-depths-18541.herokuapp.com/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

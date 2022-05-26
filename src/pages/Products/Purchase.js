@@ -12,7 +12,7 @@ const Purchase = () => {
     const { productId } = useParams();
     const [product, setProduct] = useState({});
     useEffect(() => {
-        const url = `http://localhost:5000/product/${productId}`;
+        const url = `https://limitless-depths-18541.herokuapp.com/product/${productId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data));
@@ -43,7 +43,7 @@ const Purchase = () => {
             address
         }
         //console.log(orderData);
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://limitless-depths-18541.herokuapp.com/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -65,8 +65,11 @@ const Purchase = () => {
 
             <div className='grid lg:grid-cols-3 justify-center items-center'>
                 <div>
-                    <h3 className='text-center text-4xl text-primary font-bold mb-5'>{product.name}</h3>
+                    <h3 className='text-center text-4xl text-primary font-bold mb-5'>Hello,{user.displayName}!</h3>
                     <img src={product.image} alt="" />
+                    <h2 className='text-center text-xl text-primary font-bold'>Product Name: {product.name}</h2>
+                    <h2 className='text-center text-xl text-primary font-bold'>Unit Price: ${product.price}</h2>
+                    <h2 className='text-center text-xl text-primary font-bold'>Available quantity: {product.quantity}/pcs</h2>
                 </div>
                 <div className="divider lg:divider-horizontal">OR</div>
                 <div>

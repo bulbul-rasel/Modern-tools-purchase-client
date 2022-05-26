@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Project name:Modern Teools
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live site link
+Live Firebase hosting link: [https://modern-tools.web.app/](https://modern-tools.web.app/)
 
-## Available Scripts
+### Project Description
+***
+**• This Project is based on online wholesale shop  management.** <br/>
+**• In This Project The Home Page Stands for a product banner, product section , booking product , header and footer.** <br/>
+**• In this online whole sale shop system, It have use firebase authentication for user, there are 2 type of authentication(email-password and google2).** <br/>
+**• Here I have made a manage item page for product detail product delivery and calculate Price.** <br/>
+**• Here I have made a dash board for admin and customer.** <br/>
+**• Here User can sign up and login, then s/he can order product, s/he can see their ordered product, give product review, and update his/her profile, S/he can do payment using card or cancel this order.** <br/>
+**• Here Admin can remove user, remove order until payment, Admin can add product, delete product and see the total user list, Also Admin can make an user to Admin.** <br/>
+**• There are a login log out page, Without login as user there can be no permission for online wholesale shop services.**
 
-In the project directory, you can run:
+### Supported Library and Framework
+***
+### Front End
+**• React App** <br/>
+**• Firebase Authentication** <br/>
+**• React hook form** <br/>
+**• react-router-dom** <br/>
+**• react-firebase-hooks** <br/>
+**• DaisyUi** <br/>
+**• Aos animation** <br/>
+**• Stripe Payment system** <br/>
+**• React Query** <br/>
+***
+### Back End
+**• Express** <br/>
+**• MongoDB** <br/>
+**• Nodemon** <br/>
+**• cors** <br/>
+**• dovenv**<br/>
+**• stripe**<br/>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

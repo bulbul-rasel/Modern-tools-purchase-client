@@ -37,6 +37,7 @@ const Navbar = ({ children }) => {
                             <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
                             <li><NavLink className='rounded-lg' to='/blog'>Blog</NavLink></li>
                             <li><NavLink className='rounded-lg' to='/extra'>Subscribe</NavLink></li>
+                            <li><NavLink className='rounded-lg' to='/portfolio'>My Portfolio</NavLink></li>
                             {
                                 user && <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                             }
